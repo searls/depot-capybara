@@ -4,7 +4,7 @@ This is a port of [Cheezy](http://twitter.com/chzy)'s recent [Watir](http://wati
 
 ## Getting Depot Running
 
-To run the web tests, you'll need to first be running a local instance of the Depot application from the (pre-Rails 3 edition of the) [AWDWR book](http://pragprog.com/titles/rails3). 
+To run the web tests, you'll need to first be running a local instance of the Depot application from the (pre-Rails 3 edition of the) [AWDWR book](http://pragprog.com/titles/rails3). Run this embarrasingly long command to download the Depot app and run it:
 
     curl http://media.pragprog.com/titles/rails3/code/rails3-code.tgz > code.tgz && tar xvf code.tgz && cd code/depot_t && mkdir log && touch log/devopment.log && rake db:migrate && script/server
     
