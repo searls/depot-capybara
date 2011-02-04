@@ -147,15 +147,31 @@ module CapybaraHelper
       end
     end
   
-    # adds a method that returns a table element
-    #
-    # Example:  table(:shopping_cart, {:index => 1})
-    # will generate a 'shopping_cart' method
-    def table(name, identifier)
+    def node(name,identifier)
       define_method(name) do
-        find(identifier)
+        page.find(identifier).text
+      end
+      define_method("#{name}_node") do
+        page.find(identifier)
+      end      
+    end
+    
+    def rows_in_table(name,identifier)
+      define_method(name) do
+        table = page.find(identifier)
+        table.all('tr').collect { |tr| tr.all('td') }
       end
     end
+
+    # # adds a method that returns a table element
+    # #
+    # # Example:  table(:shopping_cart, {:index => 1})
+    # # will generate a 'shopping_cart' method
+    # def table(name, identifier)
+    #   define_method(name) do
+    #     find(identifier)
+    #   end
+    # end
   
   #   # adds two methods - one to return the text within
   #   # a row and one to return a table row element
@@ -177,14 +193,14 @@ module CapybaraHelper
     # Example:  cell(:total, {:id => "total"})
     # will generate a 'total' method and a 'total_cell'
     # method
-    def cell(name, identifier)
-      define_method(name) do
-        page.find(locator).text
-      end
-      define_method("#{name}_cell") do
-        page.find(locator)
-      end
-    end
+    # def cell(name, identifier)
+    #   define_method(name) do
+    #     page.find(locator).text
+    #   end
+    #   define_method("#{name}_cell") do
+    #     page.find(locator)
+    #   end
+    # end
   # 
   #   # adds a method that returns the content of a <div>
   #   # and another method that returns the div element
