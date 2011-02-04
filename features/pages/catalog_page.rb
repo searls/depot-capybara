@@ -14,6 +14,7 @@ class CatalogPage
 
   def add_book_to_shopping_cart(name="Pragmatic Project Automation")
     all("input[value='Add to Cart']")[BOOK_MAPPING[name]-1].click
+    wait_for_ajax
     ShoppingCartPage.new
   end
 end

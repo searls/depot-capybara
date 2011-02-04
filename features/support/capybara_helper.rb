@@ -10,7 +10,12 @@ module CapybaraHelper
     cls.extend ClassMethods
   end
 
+  def wait_for_ajax
+    wait_until { evaluate_script("Ajax.activeRequestCount == 0") }
+  end
+
   module ClassMethods
+    
     # adds three methods - one to put data in a text field, another
     # to fetch that data, and another to return the actual text_field.
     #
@@ -110,8 +115,10 @@ module CapybaraHelper
     # will generate the 'save', 'save_no_wait', and
     # 'save_button' methods
     def button(name, identifier)
-      define_method(name) do
-        find_button(identifier).click
+      define_method(name) do        
+        button = find_button(identifier)
+        wait_until { button.visible? }
+        button.click
       end
       define_method("#{name}_no_wait") do
         raise NotImplementedError
