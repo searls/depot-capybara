@@ -8,7 +8,7 @@ To run the web tests, you'll need to first be running a local instance of the De
 
     curl http://media.pragprog.com/titles/rails3/code/rails3-code.tgz > code.tgz && tar xvf code.tgz && cd code/depot_t && mkdir log && touch log/devopment.log && rake db:migrate && script/server
     
-From your browser, hit http://localhost:3000/store to verify that the app is running.
+From your browser, hit [http://localhost:3000/store] to verify that the app is running.
 
 ## Running these cucumber features
 
