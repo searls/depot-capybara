@@ -10,7 +10,7 @@ The Depot source is available [here](http://pragprog.com/titles/rails3/source_co
 
     curl http://media.pragprog.com/titles/rails3/code/rails3-code.tgz > code.tgz && tar xvf code.tgz && cd code/depot_t && mkdir log && touch log/devopment.log && rake db:migrate && script/server
     
-From your browser, hit [http://localhost:3000/store] to verify that the app is running.
+From your browser, hit [http://localhost:3000/store](http://localhost:3000/store) to verify that the app is running.
 
 ## Running these cucumber features
 
