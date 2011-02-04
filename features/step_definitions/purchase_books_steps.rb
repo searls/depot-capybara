@@ -19,10 +19,6 @@ Then /^I should see "([^\"]*)" in the description for line "([^\"]*)"$/ do |desc
   @shopping_cart.description_for_line(line.to_i).should == desc
 end
 
-Then /^I should see "([^\"]*)" in the each for line "([^\"]*)"$/ do |each, line|
-  @shopping_cart.each_for_line(line.to_i).should == "$#{each}"
-end
-
 Then /^I should see "([^\"]*)" in the total for line "([^\"]*)"$/ do |total, line|
   @shopping_cart.total_for_line(line.to_i).should == "$#{total}"
 end

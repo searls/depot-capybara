@@ -4,7 +4,6 @@ class ShoppingCartPage
 
   QUANTITY_COLUMN = 0
   DESCRIPTION_COLUMN = 1
-  # EACH_COLUMN = 2
   TOTAL_COLUMN = 2
 
   button(:checkout, 'Checkout')
@@ -26,10 +25,6 @@ class ShoppingCartPage
   def description_for_line(line_number)
     cart_data_for_line(line_number)[DESCRIPTION_COLUMN].text
   end
-  
-  # def each_for_line(line_number)
-  #   cart_data_for_line(line_number)[EACH_COLUMN].text
-  # end
 
   def total_for_line(line_number)
     cart_data_for_line(line_number)[TOTAL_COLUMN].text
