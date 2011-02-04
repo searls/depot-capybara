@@ -1,24 +1,26 @@
-# Testing a remote app with Cucumber+Capybara
+# Cheezy's Watir Lab (Minus Watir) ((Plus Capybara))
 
-Granted, this is a really simple combination, but I ran into a few hurdles on my first attempt, and thought someone might benefit from my feeding github this working, minimal example of using Cucumber and Capybara to execute web tests against a remote application.
+This is a port of [Cheezy](http://twitter.com/chzy)'s recent [Watir](http://watir.com/) labs ([Blog](http://www.cheezyworld.com/2010/12/16/ui-tests-putting-it-all-together/), [Repo](https://github.com/cheezy/uitesting_blog)) to [Capybara](https://github.com/jnicklas/capybara).
 
-    git clone git://github.com/searls/remote-capybara-cucumber-example.git
-    cd remote-capybara-cucumber-example
+## Getting Depot Running
+
+To run the web tests, you'll need to first be running a local instance of the Depot application from the (pre-Rails 3 edition of the) [AWDWR book](http://pragprog.com/titles/rails3). 
+
+    curl http://media.pragprog.com/titles/rails3/code/rails3-code.tgz > code.tgz && tar xvf code.tgz && cd code/depot_t && mkdir log && touch log/devopment.log && rake db:migrate && script/server
+    
+From your browser, hit http://localhost:3000/store to verify that the app is running.
+
+## Running these cucumber features
+
+First, if you don't have it, you'll want to install [Bundler](http://gembundler.com/).
+
+    gem install bundler
+    
+Now, to execute the feature, change into the directory containing this project and run:
+
     bundle install
     bundle exec cucumber
-
-Which should produce output that looks something like:
-
-    Feature: Using Google
-
-      Scenario: Searching for a term # features/google.feature:3
-        Given I am on google.com     # features/step_definitions/google_steps.rb:1
-        When I enter "pizza"         # features/step_definitions/google_steps.rb:5
-        Then I should see results    # features/step_definitions/google_steps.rb:9
-
-    1 scenario (1 passed)
-    3 steps (3 passed)
-    0m4.550s
-
     
-The project is currently configured to use `:selenium` as the default driver, but that can be changed in `/features/support/env.rb`.
+If all goes well, the feature's scenarios will all pass and you'll be able to dig into the code.
+    
+    
